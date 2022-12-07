@@ -1,5 +1,6 @@
 '''Unit tests for translator.py'''
 import unittest
+import translator
 
 from translator import french_to_english, english_to_french
 
