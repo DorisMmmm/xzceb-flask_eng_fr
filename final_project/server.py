@@ -5,23 +5,22 @@ import translator as tr
 
 app = Flask("Web Translator")
 
-@app.route("/english_to_french")
+@app.route("/englishToFrench")
 def english_to_french():
     test_to_translate = request.args.get('text_to_translate')
-    var frenc_text = tr.english_to_french(text_to_translate)
-    return "Translated text to French"
+    var french_text = tr.english_to_french(text_to_translate)
+    return french_text
 
-@app.route("/french_to_english")
+@app.route("/frenchToEnglish")
 def french_to_english():
     text_to_translate = request.args.get('text_to_translate')
     var english_text = tr.french_to_english(text_to_translate)
     return english_text
 
 @app.route("/")
-def render_index_page():
-    render_template('index.html')
+def renderIndexPage():
+    return render_template('index.html')
 
 if __name__ == "__main__":
-    render_index_page()
     app.run(host="0.0.0.0", port=8080)
 
