@@ -1,31 +1,23 @@
-'''Unit tests for translator.py'''
+""" Unit tests """
 import unittest
-import translator
+from translator import english_to_french, french_to_english
 
-from translator import french_to_english, english_to_french
+class TestEnglishToFrench(unittest.TestCase):
+    """ English to French """
+    def test_is_not_none(self):
+        self.assertIsNotNone(english_to_french('Hello'))
+    def test_is_equal(self):
+        self.assertEqual(english_to_french('Hello'),'Bonjour')
+    def test_is_not_equal(self):
+        self.assertNotEqual(english_to_french('Lederhosen'),'Hallo')
 
-class TranslatorTestClass(unittest.TestCase):
+class TestFrenchToEnglish(unittest.TestCase):
+    """ French to English """
+    def test_is_not_none(self):
+        self.assertIsNotNone(french_to_english('Bonjour'))
+    def test_is_equal(self):
+        self.assertEqual(french_to_english('Bonjour'),'Hello')
+    def test_is_not_equal(self):
+        self.assertNotEqual(french_to_english('Bonjour'),'Gruezi')
 
-    def test_english_to_french(self):
-        ''' test for English to French'''
-        engl = english_to_french('Hello')
-        frnc = french_to_english(engl)
-        self.assertEqual(frnc, 'Bonjour')
-
-    def test_english_to_french_not_equal(self):
-        ''' test for English to French'''
-        self.assertNotEqual(english_to_french("xxx"), "")
-
-    def test_french_to_english(self):
-        '''tests for French to English'''
-        frnc = french_to_english('Bonjour')
-        engl = english_to_french(frnc)
-        self.assertEqual(engl, 'Hello')
-
-    def test_french_to_english_not_equal(self):
-        '''tests for French to English'''
-        self.assertNotEqual(french_to_english("xxx"), "")
-
-if __name__ == '__main__':
-    unittest.main()
-    
+unittest.main()
